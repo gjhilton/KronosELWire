@@ -24,6 +24,7 @@ private:
 	
 	boolean on;
 	boolean doCrackle;
+	int crackleFlickerTime;
 	void crackle();
 	int pin;
 	int delayUntilToggleOff;

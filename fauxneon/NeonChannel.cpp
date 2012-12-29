@@ -1,6 +1,7 @@
 #include "NeonChannel.h"
 
 const long DEFAULT_DELAY = 1000;
+const int DEFAULT_CRACKLE_FLICKER_TIME = 600;
 
 NeonChannel::NeonChannel(String _name, int _pin){
 	name = _name;
@@ -10,6 +11,7 @@ NeonChannel::NeonChannel(String _name, int _pin){
 	delayUntilToggleOn = DEFAULT_DELAY;
 	nextEventMillis = 0;
 	doCrackle = false;
+	crackleFlickerTime = DEFAULT_CRACKLE_FLICKER_TIME;
 }
 
 void NeonChannel::begin(){
@@ -31,7 +33,19 @@ void NeonChannel::scheduleNext(long ms){
 }
 
 void NeonChannel::crackle(){
-	
+	if (on) {
+		if (random(4) < 1){
+			// - either a loooong stable period before the next cracklage
+			scheduleNext(random(10000,60000));
+		} else {
+			// - or a short flicker delay 
+			turnOff();
+			scheduleNext(random(crackleFlickerTime/2));
+		}
+	} else {
+		turnOn();
+		scheduleNext(random(crackleFlickerTime));
+	}
 }
 
 void NeonChannel::crackleMode(bool b){
