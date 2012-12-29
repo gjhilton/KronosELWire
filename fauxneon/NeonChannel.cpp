@@ -12,14 +12,15 @@ void NeonChannel::begin(){
 }
 
 void NeonChannel::loop(){
+	toggle();
 	msg("loop");
 }
 
 void NeonChannel::toggle(){
 	if (on){
-		turnOn();
-	} else {
 		turnOff();
+	} else {
+		turnOn();
 	}
 }
 
