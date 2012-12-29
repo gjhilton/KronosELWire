@@ -85,5 +85,5 @@ long NeonChannel::toWholeSecond(long n){
 void NeonChannel::msg(String s, bool newline){
 	s = name + "[" + String(pin) + ", " + (on ? "ON" : "off")  + "] -> " + s;
 	if (newline) s = s + "\n";
-	Serial.print(s);
+	// Serial.print(s);
 }

@@ -8,15 +8,18 @@ NeonChannel yellowarrow("Fly in arrow",6);
 NeonChannel flyin("Fly in ",7);
 
 void setup() {                
-	Serial.begin(9600);
+	//Serial.begin(9600);
 	
-	karaoke.setToggleDelay(5000,1000);
-	martini.setToggleDelay(2000,3000);
-	yellowarrow.setToggleDelay(1000,3000);	
-	//greenarrow.crackleMode();
+	greenarrow.setToggleDelay(3000,1000);
+	karaoke.crackleMode();
+	martini.setToggleDelay(2000,1000);
+	cocktail.crackleMode();
+	yellowarrow.setToggleDelay(3000,1000);
+	flyin.setToggleDelay(5000,1000);	
 	
-	karaoke.begin();
+	
 	greenarrow.begin();
+	karaoke.begin();
 	martini.begin();
 	cocktail.begin();
 	yellowarrow.begin();
@@ -24,11 +27,12 @@ void setup() {
 }
 
 void loop() {
-	karaoke.loop();
 	greenarrow.loop();
+	karaoke.loop();
 	martini.loop();
 	cocktail.loop();
 	yellowarrow.loop();
 	flyin.loop();
+	
 	delay(50);
 }
