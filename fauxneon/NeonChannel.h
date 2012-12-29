@@ -16,12 +16,19 @@ public:
 	void turnOn();
 	void turnOff();
 
+	void scheduleNext(long ms);
+	
+	void setToggleDelay(int untilOn, int untilOff);
+
 private:
 	
 	boolean on;
 	int pin;
+	int delayUntilToggleOff;
+	int delayUntilToggleOn;
 	String name;
 	void msg(String s, bool newline = true);
+	long nextEventMillis;
 };
 
 #endif

@@ -6,13 +6,14 @@ NeonChannel karaoke("Karaoke",3);
 void setup() {                
 	Serial.begin(9600);
 	
+	karaoke.setToggleDelay(6000,1000);	
+	
 	karaoke.begin();
-	karaoke.toggle();
 	greenarrow.begin();
 }
 
 void loop() {
 	karaoke.loop();
 	greenarrow.loop();
-	delay(1000);
+	delay(50);
 }
