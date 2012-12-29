@@ -13,20 +13,16 @@ NeonChannel::NeonChannel(String _name, int _pin){
 
 void NeonChannel::begin(){
 	pinMode(pin, OUTPUT);
-	msg("begin");
 }
 
 void NeonChannel::loop(){
 	if (nextEventMillis <= millis()){
 		toggle();
-		msg("action");
-	} else {
-		msg("wait");
 	}
 }
 
 void NeonChannel::scheduleNext(long ms){
-	nextEventMillis = millis() + ms;
+	nextEventMillis = toWholeSecond(millis()) + ms;
 }
 
 void NeonChannel::toggle(){
@@ -52,6 +48,10 @@ void NeonChannel::turnOn(){
 void NeonChannel::turnOff(){
 	digitalWrite(pin, LOW);
 	on = false;
+}
+
+long NeonChannel::toWholeSecond(long n){
+	return round(n / 1000.0) * 1000;
 }
 
 void NeonChannel::msg(String s, bool newline){

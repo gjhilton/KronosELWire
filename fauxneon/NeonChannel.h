@@ -29,6 +29,7 @@ private:
 	String name;
 	void msg(String s, bool newline = true);
 	long nextEventMillis;
+	long toWholeSecond(long n);
 };
 
 #endif
