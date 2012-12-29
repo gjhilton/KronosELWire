@@ -6,7 +6,8 @@ NeonChannel karaoke("Karaoke",3);
 void setup() {                
 	Serial.begin(9600);
 	
-	karaoke.setToggleDelay(6000,1000);	
+	karaoke.setToggleDelay(5000,1000);	
+	greenarrow.crackleMode();
 	
 	karaoke.begin();
 	greenarrow.begin();

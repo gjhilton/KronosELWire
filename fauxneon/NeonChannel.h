@@ -16,13 +16,15 @@ public:
 	void turnOn();
 	void turnOff();
 
+	void crackleMode(bool b = true);
 	void scheduleNext(long ms);
-	
 	void setToggleDelay(int untilOn, int untilOff);
 
 private:
 	
 	boolean on;
+	boolean doCrackle;
+	void crackle();
 	int pin;
 	int delayUntilToggleOff;
 	int delayUntilToggleOn;

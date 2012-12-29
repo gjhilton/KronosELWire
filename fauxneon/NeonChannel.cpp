@@ -9,6 +9,7 @@ NeonChannel::NeonChannel(String _name, int _pin){
 	delayUntilToggleOff = DEFAULT_DELAY;
 	delayUntilToggleOn = DEFAULT_DELAY;
 	nextEventMillis = 0;
+	doCrackle = false;
 }
 
 void NeonChannel::begin(){
@@ -17,12 +18,25 @@ void NeonChannel::begin(){
 
 void NeonChannel::loop(){
 	if (nextEventMillis <= millis()){
-		toggle();
+		if (doCrackle){
+			crackle();
+		} else {
+			toggle();
+		}
 	}
 }
 
 void NeonChannel::scheduleNext(long ms){
 	nextEventMillis = toWholeSecond(millis()) + ms;
+}
+
+void NeonChannel::crackle(){
+	
+}
+
+void NeonChannel::crackleMode(bool b){
+	doCrackle = b;
+	if (doCrackle) turnOn();
 }
 
 void NeonChannel::toggle(){
