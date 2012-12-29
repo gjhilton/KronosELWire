@@ -1,18 +1,13 @@
-#define _PRINT_SERIAL
-#ifdef _PRINT_SERIAL
-	#define PRINT(x) Serial.print(x);
-#else
-	#define PRINT(x) // noop
-#endif
+#include "NeonChannel.h"
 
-const int CHANNELA = 2;
+NeonChannel karaoke("Karaoke",2);
 
 void setup() {                
+	Serial.begin(9600);
+	
+	karaoke.begin();
 
-	#ifdef _PRINT_SERIAL
-		Serial.begin(9600);
-	#endif
-
+/*
   pinMode(2, OUTPUT);  // channel A  - green
   pinMode(3, OUTPUT);  // channel B  - red
   pinMode(4, OUTPUT);  // channel C
@@ -21,20 +16,20 @@ void setup() {
   pinMode(7, OUTPUT);  // channel F
   pinMode(8, OUTPUT);  // channel G
   pinMode(9, OUTPUT);  // channel H
+*/
 
 }
 
 void loop() {
-	PRINT("loop ");
-	PRINT(millis());
-	PRINT("\n");
-	
+/*	
   int x = 3;
     digitalWrite(x, HIGH);   // turn the EL channel on
     delay(500);              // wait for 1/10 second
     digitalWrite(x, LOW);    // turn the EL channel off
 	delay(10000);
-	
+*/
+		karaoke.loop();
+		delay(1000);
 }
 
 /*
